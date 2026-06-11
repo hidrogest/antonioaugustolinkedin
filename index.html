@@ -54,6 +54,7 @@
     const GraduationCap = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M21.42 10.922a2 2 0 0 1-.01 2.83l-7.1 7.1a2 2 0 0 1-2.82 0l-7.1-7.1a2 2 0 0 1 0-2.83l7.1-7.1a2 2 0 0 1 2.82 0l7.1 7.1z"/><path d="M12 21.5v-6"/><path d="M21.5 12h-6"/></svg>;
     const Briefcase = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>;
     const Award = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>;
+    const BookOpen = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>;
 
     const CopyInlineButton = ({ text, label = "Copiar", onCopy }) => (
       <button
@@ -73,6 +74,7 @@
       const bgCapaDownload = "https://drive.google.com/uc?export=download&id=1xWmsyGNkr5oSAvJnwHlBt-sNCPyzi82e";
       const logoHidrogest = "https://drive.google.com/thumbnail?id=1aWt-ZBZIvBdviJ3hoYVExMUoQlFEt15O&sz=w200";
       const logoMec = "https://ui-avatars.com/api/?name=MEC&size=200&background=16a34a&color=fff"; 
+      const logoPuc = "https://ui-avatars.com/api/?name=PUC+Minas&size=200&background=0a66c2&color=fff"; 
       
       const fotoPerfil = "https://drive.google.com/thumbnail?id=1bEENmgAyL2WoptfIdPCv7SVNyYPKJQil&sz=w400"; 
 
@@ -97,12 +99,14 @@
 
       const copyTexts = {
         nome: "Antônio Augusto dos Santos",
-        titulo: "Técnico Hidrometrista Pleno | Engenheiro Civil | Gestão de Recursos Hídricos e Meio Ambiente",
-        sobre: "Sou Engenheiro Civil e Técnico em Meio Ambiente com mais de 9 anos de experiência em Hidrometria, Hidrologia e Gestão de Recursos Hídricos. Ao longo da minha carreira, desenvolvi forte expertise atuando em projetos hídricos e construtivos de grande porte, com extensa vivência em monitoramento e obras para o setor de mineração (projetos da Vale e Gerdau).\n\nAtualmente atuo como Técnico Hidrometrista Pleno na Hidrogest Engenharia, onde sou responsável pelo monitoramento de parâmetros hidrológicos na linha de frente. Meu escopo inclui desde medições de descargas líquidas e sólidas até a instalação e manutenção preventiva/corretiva de estações hidrométricas e pluviométricas automatizadas (telemetria). Também atuo fortemente na área comercial, realizando visitas técnicas e captação de novos clientes focados em soluções ambientais.\n\nTenho amplo domínio técnico em coordenação de equipes de perfuração, acompanhamento de poços artesianos tubulares profundos, testes de vazão, perfilagem óptica e elaboração de relatórios (RDO, APR e DSS). Sou movido pelo desafio de aliar a engenharia, o uso de tecnologias (QGIS, Revit, AutoCAD) e o trabalho em campo à gestão e preservação sustentável do nosso meio ambiente.",
-        experienciaHidrogest: "Atuo diretamente no monitoramento e gestão de parâmetros hidrológicos em campo, assim como na vertente comercial da empresa.\n\n• Realizo medições precisas de descargas líquidas e sólidas nos cursos d'água.\n• Sou responsável pela instalação, operação preventiva e manutenção corretiva de estações hidrométricas e pluviométricas.\n• Elaboro documentos e relatórios técnicos detalhados para a validação das atividades hidrológicas.\n• Atuo na linha de frente comercial, realizando visitas técnicas, negociações e captação de novos clientes.",
+        titulo: "Técnico Hidrometrista Pleno | Engenheiro Civil Especialista em Geotecnia | Gestão de Recursos Hídricos e Meio Ambiente",
+        sobre: "Sou Engenheiro Civil, Especialista em Geotecnia e Técnico em Meio Ambiente com mais de 9 anos de experiência em Hidrometria, Hidrologia e Gestão de Recursos Hídricos. Ao longo da minha carreira, desenvolvi forte expertise atuando em projetos hídricos e construtivos de grande porte, com extensa vivência em monitoramento e obras para o setor de mineração (projetos da Vale e Gerdau).\n\nAtualmente atuo como Técnico Hidrometrista Pleno na Hidrogest Engenharia, onde sou responsável pelo monitoramento de parâmetros hidrológicos na linha de frente. Meu escopo inclui desde medições de descargas líquidas e sólidas, instalação e manutenção de estações hidrométricas e pluviométricas automatizadas (telemetria), até a análise hídrica crítica dos diversos pontos monitorados. Sugiro correções e observações nos dados coletados pelas equipes de campo para garantir a compreensão precisa do comportamento hídrico pontual de cada estação.\n\nTenho amplo domínio técnico na coordenação de equipes, acompanhamento de perfuração de poços artesianos tubulares profundos (com sondas pneumáticas e rotativas), testes hídricos de bombeamento, perfilagem óptica e elaboração de relatórios e documentos de segurança (RDO, APR e DSS), fortemente voltados para reparação hídrica. Sou movido pelo desafio de aliar a engenharia, o uso de tecnologias (QGIS, Revit, AutoCAD) e o trabalho em campo à gestão e preservação sustentável do nosso meio ambiente.",
+        experienciaHidrogest: "Atuo diretamente no monitoramento e gestão de parâmetros hidrológicos em campo, bem como na análise técnica dos dados das estações.\n\n• Realizo medições precisas de descargas líquidas e sólidas nos cursos d'água.\n• Sou responsável pela instalação, operação preventiva e manutenção corretiva de estações hidrométricas e pluviométricas automatizadas (telemetria).\n• Realizo análises hídricas críticas dos dados coletados nos diversos pontos monitorados, sugerindo correções e observações para a correta avaliação do comportamento hídrico de cada estação.\n• Elaboro documentos e relatórios técnicos detalhados para a validação das atividades hidrológicas.",
         experienciaItapocos: "Atuação direta em projetos da Vale e Gerdau:\n• Coordenação de equipes especializadas em perfuração de poços artesianos tubulares profundos.\n• Monitoramento técnico de testes de vazão e elaboração de relatórios e documentos de segurança (RDO, APR e DSS).\n• Gerenciamento logístico de materiais e alinhamento de demandas junto ao planejamento central.",
-        experienciaWatergeo: "Atuação no monitoramento hidrológico (Projeto Gerdau).\n• Liderança de equipes de campo.\n• Elaboração de documentos técnicos e acompanhamento de segurança ocupacional operacional (RDO, APR, DSS).",
+        experienciaWatergeo: "Atuação focada no monitoramento e projetos de reparação hídrica (Projeto Gerdau).\n• Acompanhamento técnico no quesito perfuração de poços tubulares profundos utilizando sondas pneumáticas e rotativas.\n• Execução e monitoramento de testes hídricos de bombeamento dos poços perfurados.\n• Liderança de equipes de campo.\n• Elaboração de documentos técnicos e acompanhamento de segurança ocupacional operacional (RDO, APR, DSS).",
         experienciaAnteriores: "Atuei também no acompanhamento técnico de obras, levantamento de serviços e fiscalização de perfuração de poços e vertedouros em projetos estratégicos (Vale - Reparação Córrego do Feijão, MASA).",
+        formacaoPos: "M. ENG. em Engenharia em Geotecnia (Pós-Graduação Lato Sensu)\nPontifícia Universidade Católica de Minas Gerais (PUC Minas)\nConcluído em Dezembro de 2024. Carga horária: 443 horas-aula.",
+        formacaoEng: "Graduação em Engenharia Civil\nEnsino Superior",
         formacaoTecnico: "Curso Técnico em Meio Ambiente - Tecnológico: Ambiente e Saúde.\nRegistro SISTEC: 28368103332329CM.",
         cursosExtra: "• Revit Básico (2024)\n• QGIS/ArcGIS do Básico ao Avançado (2022)\n• Gestão de Obras, PROGEST CEFET (2017)\n• AutoCAD 2D e 3D (2012)\n• Direção Defensiva e Preventiva (CNC e Off Road - Padrão VALE - RAC 2)"
       };
@@ -164,25 +168,25 @@
 
                   <h3 className="font-bold text-xl mb-3 flex items-center gap-2 relative z-10">
                     <Rocket size={22} className="text-blue-300" />
-                    Por que ter o LinkedIn?
+                    Por que atualizar o perfil?
                   </h3>
                   
                   <p className="text-sm text-blue-100 leading-relaxed mb-4 relative z-10">
-                    Oi Antônio! Dei uma pesquisada e vi que você não usa o LinkedIn ainda. Com a sua <strong className="text-white font-bold">formação em Engenharia Civil</strong> e mais de <strong className="text-white font-bold">9 anos de experiência</strong> liderando campo e monitoramento, seu currículo é extremamente valioso para a rede!
+                    Oi Antônio! Vi que você já tem o perfil, mas não acessa muito. Atualizar sua página é um ganho duplo! Para você, é a vitrine ideal para a nova <strong className="text-white font-bold">Pós em Geotecnia</strong> e seus <strong className="text-white font-bold">9 anos de experiência</strong>. Para a <strong className="text-white font-bold">Hidrogest</strong>, ter você lá transmite uma credibilidade técnica enorme aos nossos clientes.
                   </p>
 
                   <ul className="space-y-3 mb-6 relative z-10">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={16} className="text-blue-300 shrink-0 mt-0.5" />
-                      <span className="text-sm text-blue-50">Mostrar sua trajetória técnica sólida (projetos Vale, Gerdau).</span>
+                      <span className="text-sm text-blue-50">Dar peso à imagem da Hidrogest com um especialista qualificado.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={16} className="text-blue-300 shrink-0 mt-0.5" />
-                      <span className="text-sm text-blue-50">Conectar-se com outros Engenheiros e Gestores Ambientais.</span>
+                      <span className="text-sm text-blue-50">Destacar sua Pós-graduação e os projetos de reparação hídrica.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={16} className="text-blue-300 shrink-0 mt-0.5" />
-                      <span className="text-sm text-blue-50">Representar o lado comercial e técnico da Hidrogest.</span>
+                      <span className="text-sm text-blue-50">Conectar-se com outros Engenheiros, parceiros e Gestores.</span>
                     </li>
                   </ul>
 
@@ -199,10 +203,10 @@
                 <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg border border-gray-100 p-5">
                   <h3 className="font-bold text-gray-900 text-[17px] mb-2 flex items-center gap-2">
                     <Smartphone size={20} className="text-[#0a66c2]" />
-                    Como baixar o app?
+                    Dica: use pelo celular!
                   </h3>
                   <p className="text-[13px] text-gray-600 mb-4 leading-relaxed">
-                    A primeira coisa é criar uma conta gratuita no aplicativo. Você pode baixar direto pela loja do seu celular:
+                    Caso não tenha o app no seu celular atual, baixe pela loja. Facilita muito para recuperar sua senha, aceitar convites e atualizar quando tiver um tempo:
                   </p>
                   <div className="space-y-2.5">
                     <a
@@ -301,6 +305,10 @@
                         <span className="text-[15px] font-semibold text-gray-900 text-right leading-tight group-hover:text-[#0a66c2] transition-colors">HIDROGEST ENGENHARIA</span>
                         <img src={logoHidrogest} alt="Hidrogest" className="w-10 h-10 shrink-0 object-contain bg-white rounded-lg shadow-sm border border-gray-100 group-hover:scale-105 transition-transform" />
                       </div>
+                      <div className="flex items-center gap-3 w-full justify-end group">
+                        <span className="text-[15px] font-semibold text-gray-900 text-right leading-tight group-hover:text-[#0a66c2] transition-colors">PUC MINAS</span>
+                        <img src={logoPuc} alt="PUC Minas" className="w-10 h-10 shrink-0 object-contain bg-white rounded-lg shadow-sm border border-gray-100 group-hover:scale-105 transition-transform" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -316,7 +324,7 @@
                 <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 mb-4">
                   <p className="text-sm text-blue-800 flex items-start gap-2">
                     <Info size={18} className="text-blue-500 shrink-0 mt-0.5" />
-                    <span>Deixei este resumo bem robusto, focando tanto na sua formação em Engenharia quanto nos seus anos coordenando projetos para empresas gigantes (Vale, Gerdau). Pode pedir para ajustar se achar necessário!</span>
+                    <span>Ajustei o texto conforme solicitado: removi a parte de prospecção comercial, detalhei seu papel fundamental na análise de dados das estações (sugestão de correções/observações) e adicionei as especificações de perfuração/testes hídricos da Watergeo!</span>
                   </p>
                 </div>
 
@@ -441,11 +449,33 @@
               <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
                 <h2 className="text-xl font-bold text-gray-900 mb-8">Formação Acadêmica e Licenças</h2>
 
+                {/* Pós-Graduação */}
+                <div className="flex gap-3 sm:gap-4 group/exp mb-6">
+                  <img src={logoPuc} alt="PUC Minas" className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 object-contain bg-white shadow-md rounded-lg border border-gray-100 mt-1 z-10 relative group-hover/exp:scale-105 transition-transform" />
+                  <div className="flex-1 pb-6 relative">
+                    <div className="absolute top-12 bottom-0 left-[-26px] sm:left-[-38px] w-0.5 bg-gradient-to-b from-gray-200 to-gray-100"></div>
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-[16px] sm:text-[17px] font-bold text-gray-900">
+                          M. ENG. em Engenharia em Geotecnia (Pós-Graduação Lato Sensu)
+                        </h3>
+                        <div className="text-[14px] sm:text-[15px] text-gray-900 font-medium mt-0.5">Pontifícia Universidade Católica de Minas Gerais (PUC Minas)</div>
+                      </div>
+                      <CopyInlineButton text={copyTexts.formacaoPos} label="Copiar texto" onCopy={handleCopyText} />
+                    </div>
+                    <div className="text-[14px] sm:text-[15px] text-gray-500 mt-1">
+                      Concluído em Dezembro de 2024
+                    </div>
+                  </div>
+                </div>
+
+                {/* Graduação Eng */}
                 <div className="flex gap-3 sm:gap-4 group/exp mb-6">
                   <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-100 text-gray-600 shadow-sm rounded-lg border border-gray-200 mt-1 z-10 relative group-hover/exp:scale-105 transition-transform">
                       <GraduationCap size={24} />
                   </div>
-                  <div className="flex-1 pb-2 relative">
+                  <div className="flex-1 pb-6 relative">
+                    <div className="absolute top-12 bottom-0 left-[-26px] sm:left-[-38px] w-0.5 bg-gradient-to-b from-gray-200 to-gray-100"></div>
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                       <div>
                         <h3 className="text-[16px] sm:text-[17px] font-bold text-gray-900">
@@ -453,10 +483,12 @@
                         </h3>
                         <div className="text-[14px] sm:text-[15px] text-gray-900 font-medium mt-0.5">Ensino Superior</div>
                       </div>
+                      <CopyInlineButton text={copyTexts.formacaoEng} label="Copiar texto" onCopy={handleCopyText} />
                     </div>
                   </div>
                 </div>
 
+                {/* Técnico */}
                 <div className="flex gap-3 sm:gap-4 group/exp">
                   <img src={logoMec} alt="MEC" className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 object-contain bg-white shadow-md rounded-lg border border-gray-100 mt-1 z-10 relative group-hover/exp:scale-105 transition-transform" />
                   <div className="flex-1 pb-2 relative">
@@ -498,7 +530,7 @@
                 <h2 className="text-xl font-bold text-gray-900 mb-6">Competências que podemos adicionar</h2>
                 <p className="text-sm text-gray-500 mb-4">Essas são palavras-chave excelentes que os recrutadores buscam no seu perfil:</p>
                 <div className="flex flex-wrap gap-2.5">
-                  {["Engenharia Civil", "Hidrologia", "Hidrometria", "Gestão de Recursos Hídricos", "Sedimentometria", "Telemetria", "Gestão de Obras", "Meio Ambiente", "AutoCAD", "QGIS/ArcGIS", "Revit", "RDO/APR/DSS"].map(comp => (
+                  {["Engenharia Civil", "Geotecnia", "Hidrologia", "Hidrometria", "Gestão de Recursos Hídricos", "Sedimentometria", "Telemetria", "Gestão de Obras", "Meio Ambiente", "AutoCAD", "QGIS/ArcGIS", "Revit", "RDO/APR/DSS"].map(comp => (
                     <span key={comp} className="bg-gradient-to-br from-blue-50 to-indigo-50/50 text-[#0B3B59] px-4 py-1.5 rounded-full text-sm font-medium border border-blue-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default">{comp}</span>
                   ))}
                 </div>
@@ -568,6 +600,14 @@
                     <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Experiência: Watergeo</h3>
                     <p className="text-gray-800 bg-white p-3 rounded-lg border border-gray-200 shadow-sm whitespace-pre-wrap">{copyTexts.experienciaWatergeo}</p>
                     <button onClick={() => handleCopyText(copyTexts.experienciaWatergeo)} className="mt-3 text-sm font-bold text-[#0a66c2] hover:text-[#084e96] flex items-center gap-1 transition-all">
+                      <CopyIcon size={16} /> Clicar para copiar
+                    </button>
+                  </div>
+
+                  <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50 relative group">
+                    <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Pós-Graduação (Geotecnia)</h3>
+                    <p className="text-gray-800 bg-white p-3 rounded-lg border border-gray-200 shadow-sm whitespace-pre-wrap">{copyTexts.formacaoPos}</p>
+                    <button onClick={() => handleCopyText(copyTexts.formacaoPos)} className="mt-3 text-sm font-bold text-[#0a66c2] hover:text-[#084e96] flex items-center gap-1 transition-all">
                       <CopyIcon size={16} /> Clicar para copiar
                     </button>
                   </div>
