@@ -3,586 +3,586 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hub de Auditorias — Hidrogest</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+  <title>Sugestão de Perfil - Hidrogest (Antônio)</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    :root {
-      --brand-title: #0B3B59;
-      --brand-primary: #0a66c2;
-      --brand-hover: #1478d4;
-      --navy-btn: #0B3B59;
-      --navy-btn-hover: #0e4a72;
-      
-      /* Superfícies e Fundos */
-      --bg-base: #f8fafc;
-      --bg-card: #ffffff;
-      --bg-header: rgba(255, 255, 255, 0.85);
-      --border-subtle: #dde3ea;
-      --border-card: #dde3ea;
-      
-      /* Textos */
-      --text-strong: #1e3140;
-      --text-base: #4d6475;
-      --text-muted: #8fa3b0;
-      
-      /* Badges e Status */
-      --badge-green-bg: #ecfdf5;
-      --badge-green-text: #059669;
-      --badge-green-border: #a7f3d0;
-      
-      --badge-blue-bg: #e8f3ff;
-      --badge-blue-text: #0a66c2;
-      --badge-blue-border: #bfdbfe;
-      
-      --badge-orange-bg: #fff7ed;
-      --badge-orange-text: #c2410c;
-      --badge-orange-border: #fed7aa;
-      
-      --badge-purple-bg: #fdf4ff;
-      --badge-purple-text: #c026d3;
-      --badge-purple-border: #f5d0fe;
-      
-      --badge-gray-bg: #f0f4f8;
-      --badge-gray-text: #4d6475;
-      --badge-gray-border: #dde3ea;
-
-      /* Scores */
-      --score-low: #f59e0b;
-      --score-mid: #0a66c2;
-      --score-high: #059669;
-
-      /* Efeitos */
-      --shadow-hover: 0 16px 40px rgba(11, 59, 89, 0.15);
-      --glow-1: rgba(10, 102, 194, 0.08);
-      --glow-2: rgba(0, 180, 170, 0.07);
+    @keyframes subtle-glow {
+      0%, 100% { box-shadow: 0 4px 20px rgba(10, 102, 194, 0.05); }
+      50% { box-shadow: 0 4px 25px rgba(10, 102, 194, 0.15); }
     }
-
-    /* Modo Escuro - Padrão LinkedIn */
-    [data-theme="dark"] {
-      --brand-title: #e9eaec;
-      --brand-primary: #70b5f9;
-      --brand-hover: #a6d4fa;
-      --navy-btn: #70b5f9;
-      --navy-btn-hover: #8ac4fa;
-      
-      /* Superfícies e Fundos */
-      --bg-base: #000000;
-      --bg-card: #1d2226;
-      --bg-header: rgba(29, 34, 38, 0.85);
-      --border-subtle: #38434f;
-      --border-card: #38434f;
-      
-      /* Textos */
-      --text-strong: #e9eaec;
-      --text-base: #c7d1d8;
-      --text-muted: #8f959e;
-      
-      /* Badges e Status */
-      --badge-green-bg: rgba(68, 154, 91, 0.15);
-      --badge-green-text: #449a5b;
-      --badge-green-border: rgba(68, 154, 91, 0.3);
-      
-      --badge-blue-bg: rgba(112, 181, 249, 0.15);
-      --badge-blue-text: #70b5f9;
-      --badge-blue-border: rgba(112, 181, 249, 0.3);
-      
-      --badge-orange-bg: rgba(245, 158, 11, 0.15);
-      --badge-orange-text: #fbbf24;
-      --badge-orange-border: rgba(251, 191, 36, 0.3);
-      
-      --badge-purple-bg: rgba(192, 38, 211, 0.15);
-      --badge-purple-text: #e879f9;
-      --badge-purple-border: rgba(232, 121, 249, 0.3);
-      
-      --badge-gray-bg: rgba(143, 149, 158, 0.15);
-      --badge-gray-text: #8f959e;
-      --badge-gray-border: #38434f;
-
-      /* Scores */
-      --score-low: #fbbf24;
-      --score-mid: #70b5f9;
-      --score-high: #449a5b;
-
-      /* Efeitos */
-      --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.7);
-      --glow-1: rgba(112, 181, 249, 0.05);
-      --glow-2: rgba(68, 154, 91, 0.05);
+    .animate-glow { 
+      animation: subtle-glow 4s ease-in-out infinite; 
     }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    @keyframes pulseSoft { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-    
-    @keyframes premiumGlow {
-      0% { box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4), 0 0 0 0 rgba(0, 210, 255, 0.2); }
-      50% { box-shadow: 0 6px 25px rgba(0, 180, 170, 0.6), 0 0 12px 4px rgba(10, 102, 194, 0.3); }
-      100% { box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4), 0 0 0 0 rgba(0, 210, 255, 0.2); }
+    .shimmer {
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
     }
-    @keyframes shimmerEffect {
-      0% { transform: translateX(-150%) skewX(-25deg); }
-      100% { transform: translateX(150%) skewX(-25deg); }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
     }
-
-    body { 
-      font-family: 'DM Sans', sans-serif; 
-      background: var(--bg-base); 
-      color: var(--text-strong); 
-      min-height: 100vh; 
-      overflow-x: hidden; 
-      transition: background-color 0.4s ease, color 0.4s ease;
-    }
-    body::before {
-      content: ''; position: fixed; inset: 0; z-index: -1;
-      background: radial-gradient(ellipse 60% 50% at 10% 10%, var(--glow-1) 0%, transparent 60%),
-                  radial-gradient(ellipse 50% 60% at 90% 80%, var(--glow-2) 0%, transparent 60%), var(--bg-base);
-      transition: background 0.4s ease;
-    }
-    
-    /* Header & Toolbar */
-    header { 
-      position: sticky; top: 0; z-index: 100; 
-      background: var(--bg-header); 
-      backdrop-filter: blur(20px); 
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-subtle); 
-      transition: background-color 0.3s, border-color 0.3s;
-      animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    
-    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0.5rem 2rem; min-height: 90px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-    .header-brand { display: flex; align-items: center; gap: 1rem; }
-    
-    .brand-logo { 
-        height: 75px; 
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    }
-    .header-brand:hover .brand-logo {
-        transform: scale(1.08) rotate(-3deg);
-    }
-    
-    .logo-dark { display: none; }
-    [data-theme="dark"] .logo-light { display: none; }
-    [data-theme="dark"] .logo-dark { display: block; }
-    
-    .brand-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--brand-title); transition: color 0.3s; }
-    .brand-sub { font-size: .75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
-    
-    .header-actions { display: flex; align-items: center; gap: 1.5rem; }
-    .header-stats { display: flex; gap: 1.5rem; background: var(--bg-base); border: 1px solid var(--border-subtle); border-radius: 14px; padding: .6rem 1.2rem; transition: background-color 0.3s, border-color 0.3s; }
-    .header-stats:hover { border-color: var(--brand-primary); }
-    .stat-item { display: flex; align-items: center; gap: .6rem; }
-    .stat-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-    .header-stats:hover .stat-icon { transform: scale(1.1); }
-    .stat-icon.blue { background: var(--badge-blue-bg); color: var(--badge-blue-text); }
-    .stat-icon.green { background: var(--badge-green-bg); color: var(--badge-green-text); }
-    .stat-label { font-size: .65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2px; display: block;}
-    .stat-value { font-size: 1.1rem; font-weight: 700; line-height: 1; color: var(--text-strong); }
-    .score-bar-track { width: 72px; height: 6px; background: var(--border-subtle); border-radius: 99px; overflow: hidden; display: inline-block; }
-    .score-bar-fill { height: 100%; background: var(--brand-primary); transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s; }
-    
-    /* Botão Dark Mode */
-    .theme-toggle {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-strong);
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .theme-toggle:hover { background: var(--brand-primary); color: white; border-color: var(--brand-primary); transform: scale(1.1) rotate(15deg); }
-
-    main { max-width: 1280px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
-
-    .info-banner {
-      background: var(--badge-blue-bg);
-      border: 1px solid var(--badge-blue-border);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 2rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      color: var(--text-base);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    .info-banner strong { color: var(--brand-primary); }
-    .info-banner .highlight-text { color: var(--text-strong); font-weight: 700; }
-    .info-icon { color: var(--brand-primary); flex-shrink: 0; margin-top: 2px; }
-    [data-theme="dark"] .info-banner { color: var(--text-strong); }
-
-    .toolbar { display: flex; gap: 1rem; margin-bottom: 2rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: .9rem 1.2rem; transition: background-color 0.3s, border-color 0.3s; }
-    .search-wrap { position: relative; flex: 1; }
-    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); transition: color 0.3s; }
-    .search-input { width: 100%; padding: .75rem 1rem .75rem 2.75rem; background: var(--bg-base); border: 1px solid var(--border-subtle); border-radius: 99px; font: inherit; font-size: .9rem; color: var(--text-strong); outline: none; transition: all 0.3s; }
-    .search-input::placeholder { color: var(--text-muted); }
-    .search-input:focus { border-color: var(--brand-primary); box-shadow: 0 0 0 4px var(--glow-1); transform: scale(1.01); }
-    .search-input:focus + .search-icon, .search-wrap:focus-within .search-icon { color: var(--brand-primary); }
-    
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-    
-    .card { position: relative; background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s; opacity: 0; overflow: hidden; }
-    .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-hover); border-color: var(--brand-primary); z-index: 10; }
-    
-    .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
-    .dept-badge, .recent-badge { font-size: .65rem; font-weight: 700; text-transform: uppercase; padding: .3rem .75rem; border-radius: 99px; border: 1px solid; transition: 0.3s; }
-    .dept-badge { background: var(--badge-gray-bg); color: var(--badge-gray-text); border-color: var(--badge-gray-border); }
-    .recent-badge { background: var(--badge-purple-bg); color: var(--badge-purple-text); border-color: var(--badge-purple-border); display: flex; gap: .25rem; align-items: center; animation: pulseSoft 2s infinite; }
-    .li-icon { color: var(--border-subtle); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); } 
-    .card:hover .li-icon { color: var(--brand-primary); transform: scale(1.2); }
-    
-    .card-identity { text-align: center; display: flex; flex-direction: column; align-items: center; gap: .75rem; }
-    .avatar-wrap { position: relative; }
-    .avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 3px solid var(--bg-card); box-shadow: 0 0 0 2px var(--border-subtle); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .avatar.pending { background: var(--badge-gray-bg); color: var(--text-muted); display: flex; align-items: center; justify-content: center; }
-    .card:hover .avatar:not(.pending) { box-shadow: 0 0 0 4px var(--brand-primary); transform: scale(1.05); }
-    .score-badge { position: absolute; bottom: 0; right: -2px; width: 26px; height: 26px; border-radius: 50%; background: var(--score-high); border: 2px solid var(--bg-card); display: flex; align-items: center; justify-content: center; color: #fff; transition: transform 0.3s; }
-    .card:hover .score-badge { transform: scale(1.15) rotate(10deg); }
-    
-    .card-name { font-size: 1.1rem; font-weight: 700; color: var(--text-strong); transition: color 0.3s; } 
-    .card:hover .card-name { color: var(--brand-primary); }
-    .card-role { font-size: .85rem; color: var(--text-muted); transition: color 0.3s; }
-    .card:hover .card-role { color: var(--text-strong); }
-    
-    .verify-pill { display: inline-flex; gap: .45rem; font-size: .75rem; font-weight: 700; padding: .4rem 1rem; border-radius: 8px; margin-top: 8px; width: 100%; justify-content: center; align-items: center; transition: all 0.3s; }
-    .verify-pill.confirmed { background: var(--badge-green-bg); color: var(--badge-green-text); border: 1px solid var(--badge-green-border); }
-    .verify-pill.pending { background: var(--badge-orange-bg); color: var(--badge-orange-text); border: 1px solid var(--badge-orange-border); }
-    .verify-pill.working { background: var(--badge-gray-bg); color: var(--badge-gray-text); border: 1px solid var(--badge-gray-border); }
-    
-    .card-footer { margin-top: auto; padding-top: 1.25rem; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: .75rem; transition: border-color 0.3s; }
-    .card:hover .card-footer { border-color: rgba(10, 102, 194, 0.2); }
-    
-    .progress-meta { display: flex; justify-content: space-between; align-items: flex-end; }
-    .progress-label, .score-status { font-size: .65rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
-    .score-num { font-size: 1.3rem; font-weight: 800; line-height: 1; transition: transform 0.3s; }
-    .card:hover .score-num { transform: scale(1.05); transform-origin: right bottom; }
-    .score-num.high, .score-status.high { color: var(--score-high); } 
-    .score-num.mid, .score-status.mid { color: var(--score-mid); } 
-    .score-num.low, .score-status.low { color: var(--score-low); }
-    
-    .progress-track { height: 8px; background: var(--border-subtle); border-radius: 99px; overflow: hidden; margin-bottom: 0.25rem; }
-    .progress-fill { height: 100%; transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s; }
-    .progress-fill.high { background: var(--score-high); } 
-    .progress-fill.mid { background: var(--brand-primary); } 
-    .progress-fill.low { background: var(--score-low); }
-    
-    .card-cta { display: flex; align-items: center; justify-content: center; gap: .4rem; background: var(--navy-btn); color: #fff; border-radius: 10px; padding: .85rem; font-size: .85rem; font-weight: 700; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    [data-theme="dark"] .card-cta { color: var(--bg-base); }
-    .card-cta:not(.disabled):hover { background: var(--brand-primary); transform: translateY(-2px); box-shadow: 0 4px 12px var(--glow-1); }
-    .card-cta.disabled { background: var(--border-subtle); color: var(--text-muted); cursor: not-allowed; }
-
-    .premium-cta {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      background: linear-gradient(135deg, #00b4aa 0%, #0a66c2 50%, #0077b5 100%);
-      background-size: 200% auto;
-      color: #fff !important;
-      border-radius: 10px;
-      padding: .85rem;
-      font-size: .85rem;
-      font-weight: 700;
-      text-decoration: none;
-      overflow: hidden;
-      border: none;
-      box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4);
-      animation: premiumGlow 3s infinite ease-in-out;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-position 0.5s ease;
-    }
-    .premium-cta::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transform: translateX(-150%) skewX(-25deg);
-      animation: shimmerEffect 3.5s infinite linear;
-    }
-    .premium-cta:hover {
-      transform: translateY(-3px) scale(1.02);
-      background-position: right center;
-    }
-    .premium-cta .li-logo-svg {
-      animation: pulseSoft 1.5s infinite ease-in-out;
-    }
-    
-    /* Escudo de Ex-Colaborador */
-    .ex-employee-shield {
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      text-align: center;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-    [data-theme="dark"] .ex-employee-shield {
-      background: rgba(29, 34, 38, 0.75);
-    }
-    .shield-icon-svg {
-      color: var(--score-low);
-      margin-bottom: 0.75rem;
-      width: 42px; height: 42px;
-      animation: pulseSoft 2s infinite;
-    }
-    .shield-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text-strong);
-      margin-bottom: 0.25rem;
-    }
-    .shield-text {
-      font-size: 0.85rem;
-      line-height: 1.4;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
-    .shield-btn {
-      background: transparent;
-      color: var(--text-strong);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 0.5rem 1rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .shield-btn:hover {
-      background: var(--bg-base);
-      border-color: var(--text-strong);
-    }
-
-    @media (max-width: 640px) { .header-stats { display: none; } main { padding: 1.5rem 1rem; } .brand-logo { height: 60px; } }
   </style>
 </head>
-<body>
-  <header>
-    <div class="header-inner">
-      <div class="header-brand">
-        <img class="brand-logo logo-light" src="https://drive.google.com/thumbnail?id=1X5-RC14ZWY1Unn4bxS8ZPPoUxbf1ZRH_&sz=w400" alt="Hidrogest">
-        <img class="brand-logo logo-dark" src="https://drive.google.com/thumbnail?id=1oi5x7yT3490ti7VgX4T4HDBtU6A31pnV&sz=w400" alt="Hidrogest">
-        <div><div class="brand-title">Hub de Auditorias</div><div class="brand-sub">Otimização de Perfis</div></div>
-      </div>
-      <div class="header-actions">
-        <div class="header-stats">
-          <div class="stat-item"><div class="stat-icon blue"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <div><span class="stat-label">Membros</span><span class="stat-value" id="stat-count">—</span></div></div>
-          <div class="stat-item"><div class="stat-icon green"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.3V9h3.4v1.5c.5-.9 1.6-1.8 3.3-1.8 3.6 0 4.2 2.3 4.2 5.4v6.3zM5.3 7.4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2s2 .9 2 2c0 1.1-.9 2-2 2zm1.7 13H3.5V9h3.5v11.4zM22.2 0H1.7C.7 0 0 .7 0 1.7v20.5C0 23.2.7 24 1.7 24h20.4c1 0 1.7-.7 1.7-1.7V1.7C24 .7 23.2 0 22.2 0z"/></svg></div>
-          <div><span class="stat-label">Score Médio</span><div style="display:flex;gap:8px;align-items:center"><div class="score-bar-track"><div class="score-bar-fill" id="avg-bar" style="width:0%"></div></div><span class="stat-value" id="stat-avg">—</span></div></div></div>
-        </div>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar modo escuro" title="Alternar tema">
-          <svg id="theme-icon" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"></svg>
-        </button>
-      </div>
-    </div>
-  </header>
+<body class="bg-gradient-to-br from-[#f0f4f8] via-[#e8f0fe] to-[#f0f4f8] min-h-screen text-slate-800">
 
-  <main>
-    <div class="info-banner">
-      <svg class="info-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="12" y1="16" x2="12" y2="12"/>
-        <line x1="12" y1="8" x2="12.01" y2="8"/>
-      </svg>
-      <div>
-        <strong>Sobre a tag "Não Verificada":</strong> Ela refere-se exclusivamente ao selo oficial de <span class="highlight-text">Identidade Verificada do LinkedIn</span>. Isso indica apenas que o usuário ainda não realizou o processo voluntário de validação de identidade (geralmente enviando um documento via Persona) na plataforma. Não significa que o perfil seja inválido ou falso.
-      </div>
-    </div>
+  <div id="root"></div>
 
-    <div class="toolbar">
-      <div class="search-wrap">
-        <svg class="search-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="search" class="search-input" type="text" placeholder="Buscar por nome ou cargo…" autocomplete="off">
-      </div>
-    </div>
-    <div class="card-grid" id="grid"></div>
-  </main>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
 
-  <script>
-    const themeBtn = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const root = document.documentElement;
+    // --- Ícones (SVGs) ---
+    const CheckCircle2 = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>;
+    const MapPin = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>;
+    const Mail = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>;
+    const Phone = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
+    const ChevronRight = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m9 18 6-6-6-6"/></svg>;
+    const Rocket = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 3.82-13.04L14 3l1.86 1.86c.65.65 1.48 1.15 2.41 1.45L21 7l-2.04 1.18a22 22 0 0 1-13.04 3.82z"/><circle cx="14.5" cy="9.5" r="1.5"/></svg>;
     
-    const icons = {
-      sun: `<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>`,
-      moon: `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`
-    };
+    const CopyIcon = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>;
+    const XCircle = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>;
+    const ArrowLeft = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>;
+    const Linkedin = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>;
+    const Info = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>;
+    const DownloadIcon = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>;
+    const Smartphone = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>;
+    const GraduationCap = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M21.42 10.922a2 2 0 0 1-.01 2.83l-7.1 7.1a2 2 0 0 1-2.82 0l-7.1-7.1a2 2 0 0 1 0-2.83l7.1-7.1a2 2 0 0 1 2.82 0l7.1 7.1z"/><path d="M12 21.5v-6"/><path d="M21.5 12h-6"/></svg>;
+    const Briefcase = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>;
+    const Award = ({ size = 24, className = "" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>;
 
-    function setTheme(theme) {
-      root.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      themeIcon.innerHTML = theme === 'dark' ? icons.sun : icons.moon;
-    }
+    const CopyInlineButton = ({ text, label = "Copiar", onCopy }) => (
+      <button
+        onClick={(e) => { e.stopPropagation(); onCopy(text); }}
+        className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-[#0a66c2] to-[#084e96] hover:from-[#084e96] hover:to-[#063970] text-white text-[11px] uppercase tracking-wider font-bold rounded-full transition-all shadow-[0_4px_10px_rgba(10,102,194,0.3)] hover:shadow-[0_6px_15px_rgba(10,102,194,0.4)] hover:-translate-y-0.5 active:scale-95 shrink-0"
+        title="Clique aqui para copiar"
+      >
+        <CopyIcon size={14} /> {label}
+      </button>
+    );
 
-    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    setTheme(savedTheme);
+    function App() {
+      const [showCopyModal, setShowCopyModal] = useState(false);
+      const [toastMsg, setToastMsg] = useState("");
 
-    themeBtn.addEventListener('click', () => {
-      const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      setTheme(newTheme);
-    });
+      const bgCapa = "https://drive.google.com/thumbnail?id=1xWmsyGNkr5oSAvJnwHlBt-sNCPyzi82e&sz=w1200";
+      const bgCapaDownload = "https://drive.google.com/uc?export=download&id=1xWmsyGNkr5oSAvJnwHlBt-sNCPyzi82e";
+      const logoHidrogest = "https://drive.google.com/thumbnail?id=1aWt-ZBZIvBdviJ3hoYVExMUoQlFEt15O&sz=w200";
+      const logoMec = "https://ui-avatars.com/api/?name=MEC&size=200&background=16a34a&color=fff"; 
+      
+      const fotoPerfil = "https://drive.google.com/thumbnail?id=1bEENmgAyL2WoptfIdPCv7SVNyYPKJQil&sz=w400"; 
 
-    const TEAM = [
-      { nome: "Antônio José Machado", cargo: "Sócio Diretor & Eng. Responsável", score: 100, verificado: false, recente: true, dataRelatorio: "01/06/2026", avatar: "https://drive.google.com/thumbnail?id=1-jBHy0UWqwNi5RAvII22ltyVMfxuj4Xn&sz=w400", url: "https://hidrogest.github.io/antoniolinkedin", linkedinUrl: "https://www.linkedin.com/in/antoniojosemachado/" },
-      { nome: "Thiago Gurgel Machado", cargo: "Diretor de Operações", score: 30, verificado: false, recente: true, dataRelatorio: "02/06/2026", avatar: "https://drive.google.com/thumbnail?id=1ZFV4kqfKwUJL1cpiTpF8IdA5KO0wmkq2&sz=w400", url: "https://hidrogest.github.io/thiagolinkedin" },
-      { nome: "Anna Pâula do Vale", cargo: "Gerente de Engenharia", score: 90, verificado: true, recente: false, dataRelatorio: "27/05/2026", avatar: "https://drive.google.com/thumbnail?id=1PXOebax4hkwDSVls3bGbOI3Sm4epWtHz&sz=w400", url: "https://hidrogest.github.io/annalinkedin", linkedinUrl: "https://www.linkedin.com/in/anna-p%C3%A2ula-do-vale-08b461328/", faltaCapa: true, capaUrl: "https://drive.google.com/file/d/1KM54Q6aGlO2wZCA8niU6qx11cBYnumAX/view" },
-      { nome: "Rosângela Gurgel Machado", cargo: "Diretora Técnica em Engenharia", score: 100, verificado: false, recente: false, dataRelatorio: "27/05/2026", avatar: "https://drive.google.com/thumbnail?id=1KZ-A61W689c2rvUvocNZpEhaqxpsFZ4_&sz=w400", url: "https://hidrogest.github.io/rosangelalinkedin", linkedinUrl: "https://www.linkedin.com/in/rosangelamoreiragurgel/" },
-      { nome: "Michel Oliveira", cargo: "Coord. de Hidrometria e Topografia", score: 100, verificado: true, recente: false, dataRelatorio: "02/06/2026", avatar: "https://drive.google.com/thumbnail?id=1Fe4yCPfrkCqWWUERvMC4HGS3pY76JBwg&sz=w400", url: "https://hidrogest.github.io/michellinkedin", linkedinUrl: "https://www.linkedin.com/in/micheloliveirahidro/" },
-      { nome: "Mariane Rodrigues Silveira", cargo: "Gestão Adm. e Financeira", score: 30, verificado: true, recente: true, dataRelatorio: "03/06/2026", avatar: "https://drive.google.com/thumbnail?id=1To0II_tJNLy4F6bxqCrNOs_DodpEE0bk&sz=w400", url: "https://hidrogest.github.io/marianelinkedin" },
-      { nome: "Leonardo Gurgel Machado", cargo: "Diretor Executivo", score: 90, verificado: true, recente: true, dataRelatorio: "01/06/2026", avatar: "https://drive.google.com/thumbnail?id=1S5nhIbBQXa7asM34lzmIf6bYBm5CiY25&sz=w800", url: "https://hidrogest.github.io/leonardolinkedin", linkedinUrl: "https://www.linkedin.com/in/leonardo-gurgel-machado-90b87b29/", faltaCapa: true, capaUrl: "https://drive.google.com/file/d/1tzJpkm8gnxPvvbimRaqJzI5KBH_Txzzj/view" },
-      { nome: "Altamir Teixeira da Gama", cargo: "Técnico Hidrometrista Sênior", score: 42, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=13eQo8nqMCL67PRPlAd7BcqchJVP-iLVd&sz=w800", url: "https://hidrogest.github.io/altamirlinkedin" },
-      { nome: "Dieyme Junior Dornas de Amorim", cargo: "Técnico Hidrometrista & Marinheiro Fluvial", score: 55, verificado: false, recente: true, dataRelatorio: "01/06/2026", avatar: "https://drive.google.com/thumbnail?id=1joo7Z6vBMKFMYzYySR9gGl6BXKYCEKRO&sz=w800", url: "https://hidrogest.github.io/dieymelinkedin" },
-      { nome: "Glayson Alves de Jesus", cargo: "Analista Financeiro e de Qualidade Sênior", score: 38, verificado: false, recente: true, dataRelatorio: "03/06/2026", avatar: "https://drive.google.com/thumbnail?id=1R9iGTL_wu-NiDj1LmrFLZyE-zHqAB8dg&sz=w800", url: "https://hidrogest.github.io/glaysonlinkedin" },
-      { nome: "Guilherme Moura Costa Gomes", cargo: "Técnico Hidrometrista Pleno", score: 47, verificado: false, ex_colaborador: true, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=1MXqmEpY_Da2xxosAn5wNPPxYEyxIUKiB&sz=w800", url: "https://hidrogest.github.io/guilhermelinkedin" },
-      { nome: "João Pedro Nascimento de Sousa", cargo: "Técnico Ambiental", score: 33, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=1214VTK6PnbfHN6djgbhLxj9dLEksTHQo&sz=w800", url: "https://hidrogest.github.io/joaolinkedin" },
-      { nome: "Douglas Maxiliano Rosa de Oliveira", cargo: "Técnico Hidrometrista Júnior", score: 100, verificado: false, recente: true, dataRelatorio: "08/06/2026", avatar: "https://ui-avatars.com/api/?name=Douglas+Maxiliano&size=400&background=0a66c2&color=fff", url: "https://hidrogest.github.io/douglaslinkedin" },
-      { nome: "Rafael Pereira dos Santos", cargo: "Técnico em Meio Ambiente | Técnico Hidrometrista Júnior", score: 51, verificado: false, recente: true, dataRelatorio: "08/06/2026", avatar: "https://drive.google.com/thumbnail?id=1c2_20EH6Hvx86wPhK1Ym5LXPbUH2WOLu&sz=w800", url: "https://hidrogest.github.io/rafaellinkedin" },
-      { nome: "Alvimar Alves dos Santos", cargo: "Engenheiro Ambiental | Analista Ambiental", score: 45, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=1aQTTGGcBFWT9fLmK5_AIytrklAKQBTKR&sz=w800", url: "https://hidrogest.github.io/alvimarlinkedin" },
-      { nome: "Valdeir Resende Pires", cargo: "Técnico Hidrometrista Pleno", score: 80, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://ui-avatars.com/api/?name=Valdeir+Resende&size=200&background=0a66c2&color=fff", url: "https://hidrogest.github.io/valdeirlinkedin" },
-      { nome: "Franciele Neri", cargo: "Técnica em Segurança do Trabalho Sênior", score: 35, verificado: false, ex_colaborador: true, recente: true, dataRelatorio: "08/06/2026", avatar: "https://drive.google.com/thumbnail?id=1MzS3wR4nvlmWCClfP3C9tnsoKcnr49VD&sz=w800", url: "https://hidrogest.github.io/francielelinkedin" },
-      { nome: "Miqueias Palmeira de Souza Santos", cargo: "Auxiliar de Hidrometrista", score: 49, verificado: false, recente: true, dataRelatorio: "08/06/2026", avatar: "https://ui-avatars.com/api/?name=Miqueias+Palmeira&size=400&background=e2e8f0&color=64748b", url: "https://hidrogest.github.io/miqueiaslinkedin" },
-      { nome: "Elias Henrique Gomes dos Santos", cargo: "Auxiliar de Hidrometrista", score: 37, verificado: false, ex_colaborador: true, recente: true, dataRelatorio: "08/06/2026", avatar: "https://ui-avatars.com/api/?name=Elias+Henrique&size=400&background=e2e8f0&color=64748b", url: "https://hidrogest.github.io/eliaslinkedin" },
-      { nome: "Antônio Augusto dos Santos", cargo: "Técnico Hidrometrista Pleno | Eng. Civil", score: 30, verificado: false, recente: true, dataRelatorio: "11/06/2026", avatar: "https://drive.google.com/thumbnail?id=1bEENmgAyL2WoptfIdPCv7SVNyYPKJQil&sz=w400", url: "https://hidrogest.github.io/antonioaugustolinkedin" },
-      { nome: "Membro Pendente", cargo: "Trabalhando no perfil...", pendente: true }
-    ];
-
-    const SVG = {
-      shield: `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path fill="none" stroke="#fff" stroke-width="2.5" d="m9 12 2 2 4-4"/></svg>`,
-      check: `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`,
-      alert: `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>`,
-      ext: `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
-      user: `<svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
-      loader: `<svg width="16" height="16" viewBox="0 0 24 24"><style>.s{transform-origin:center;animation:r .75s infinite linear}@keyframes r{100%{transform:rotate(360deg)}}</style><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12A1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" class="s"/></svg>`,
-      li: `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.3V9h3.4v1.5c.5-.9 1.6-1.8 3.3-1.8 3.6 0 4.2 2.3 4.2 5.4v6.3zM5.3 7.4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2s2 .9 2 2c0 1.1-.9 2-2 2zm1.7 13H3.5V9h3.5v11.4zM22.2 0H1.7C.7 0 0 .7 0 1.7v20.5C0 23.2.7 24 1.7 24h20.4c1 0 1.7-.7 1.7-1.7V1.7C24 .7 23.2 0 22.2 0z"/></svg>`,
-      sparkle: `<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>`,
-      download: `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
-      calendar: `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
-      block: `<svg class="shield-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
-    };
-
-    let search = '';
-    const active = TEAM.filter(m => !m.pendente);
-    const avg = Math.round(active.reduce((a, b) => a + b.score, 0) / active.length);
-    document.getElementById('stat-count').textContent = active.length;
-    document.getElementById('stat-avg').textContent = avg + '%';
-    setTimeout(() => document.getElementById('avg-bar').style.width = avg + '%', 300);
-
-    document.getElementById('search').addEventListener('input', e => { search = e.target.value.toLowerCase(); render(); });
-
-    function render() {
-      const grid = document.getElementById('grid');
-      const filtered = TEAM.filter(m => m.nome.toLowerCase().includes(search) || m.cargo.toLowerCase().includes(search));
-
-      grid.innerHTML = filtered.map((m, i) => {
-        if (m.pendente) return `
-          <div class="card" style="animation-delay:${i*60}ms">
-            <div class="card-identity"><div class="avatar pending">${SVG.user}</div>
-            <div style="width:100%"><div class="card-name" style="color:var(--text-muted)">${m.nome}</div><div class="card-role">${m.cargo}</div>
-            <div class="verify-pill working">${SVG.loader} Mapeando</div></div></div>
-            <div class="card-footer"><button class="card-cta disabled">Indisponível</button></div>
-          </div>`;
-
-        const tier = m.score >= 90 ? 'high' : m.score >= 50 ? 'mid' : 'low';
-        const label = m.score >= 90 ? 'Concluído' : m.score >= 50 ? 'Em andamento' : 'Iniciado';
-        const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(m.nome)}&size=200&background=0a66c2&color=fff&bold=true`;
-
-        // Renderiza o botão do LinkedIn de acordo com o status da capa
-        let linkedinButton = '';
-        if (m.linkedinUrl) {
-          if (m.faltaCapa) {
-            linkedinButton = `
-              <a class="card-cta" style="background: transparent; color: var(--text-strong); border: 1px solid var(--border-subtle); font-weight: 600;" href="${m.linkedinUrl}" target="_blank">
-                Acessar LinkedIn ${SVG.ext}
-              </a>
-            `;
-          } else {
-            linkedinButton = `
-              <a class="premium-cta" href="${m.linkedinUrl}" target="_blank">
-                <span class="li-logo-svg">${SVG.li}</span> LinkedIn Otimizado
-              </a>
-            `;
-          }
+      const handleCopyText = (text) => {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          setToastMsg("Prontinho! Texto copiado.");
+        } catch (err) {
+          setToastMsg("Ops, não consegui copiar.");
         }
+        document.body.removeChild(textArea);
+        setTimeout(() => setToastMsg(""), 3000);
+      };
 
-        // Botão para baixar a capa
-        const capaButton = m.capaUrl ? `
-          <a class="card-cta" style="background: var(--score-low); color: #fff; border: none;" href="${m.capaUrl}" target="_blank">
-            ${SVG.download} Baixar Capa
-          </a>
-        ` : '';
+      const copyTexts = {
+        nome: "Antônio Augusto dos Santos",
+        titulo: "Técnico Hidrometrista Pleno | Engenheiro Civil | Gestão de Recursos Hídricos e Meio Ambiente",
+        sobre: "Sou Engenheiro Civil e Técnico em Meio Ambiente com mais de 9 anos de experiência em Hidrometria, Hidrologia e Gestão de Recursos Hídricos. Ao longo da minha carreira, desenvolvi forte expertise atuando em projetos hídricos e construtivos de grande porte, com extensa vivência em monitoramento e obras para o setor de mineração (projetos da Vale e Gerdau).\n\nAtualmente atuo como Técnico Hidrometrista Pleno na Hidrogest Engenharia, onde sou responsável pelo monitoramento de parâmetros hidrológicos na linha de frente. Meu escopo inclui desde medições de descargas líquidas e sólidas até a instalação e manutenção preventiva/corretiva de estações hidrométricas e pluviométricas automatizadas (telemetria). Também atuo fortemente na área comercial, realizando visitas técnicas e captação de novos clientes focados em soluções ambientais.\n\nTenho amplo domínio técnico em coordenação de equipes de perfuração, acompanhamento de poços artesianos tubulares profundos, testes de vazão, perfilagem óptica e elaboração de relatórios (RDO, APR e DSS). Sou movido pelo desafio de aliar a engenharia, o uso de tecnologias (QGIS, Revit, AutoCAD) e o trabalho em campo à gestão e preservação sustentável do nosso meio ambiente.",
+        experienciaHidrogest: "Atuo diretamente no monitoramento e gestão de parâmetros hidrológicos em campo, assim como na vertente comercial da empresa.\n\n• Realizo medições precisas de descargas líquidas e sólidas nos cursos d'água.\n• Sou responsável pela instalação, operação preventiva e manutenção corretiva de estações hidrométricas e pluviométricas.\n• Elaboro documentos e relatórios técnicos detalhados para a validação das atividades hidrológicas.\n• Atuo na linha de frente comercial, realizando visitas técnicas, negociações e captação de novos clientes.",
+        experienciaItapocos: "Atuação direta em projetos da Vale e Gerdau:\n• Coordenação de equipes especializadas em perfuração de poços artesianos tubulares profundos.\n• Monitoramento técnico de testes de vazão e elaboração de relatórios e documentos de segurança (RDO, APR e DSS).\n• Gerenciamento logístico de materiais e alinhamento de demandas junto ao planejamento central.",
+        experienciaWatergeo: "Atuação no monitoramento hidrológico (Projeto Gerdau).\n• Liderança de equipes de campo.\n• Elaboração de documentos técnicos e acompanhamento de segurança ocupacional operacional (RDO, APR, DSS).",
+        experienciaAnteriores: "Atuei também no acompanhamento técnico de obras, levantamento de serviços e fiscalização de perfuração de poços e vertedouros em projetos estratégicos (Vale - Reparação Córrego do Feijão, MASA).",
+        formacaoTecnico: "Curso Técnico em Meio Ambiente - Tecnológico: Ambiente e Saúde.\nRegistro SISTEC: 28368103332329CM.",
+        cursosExtra: "• Revit Básico (2024)\n• QGIS/ArcGIS do Básico ao Avançado (2022)\n• Gestão de Obras, PROGEST CEFET (2017)\n• AutoCAD 2D e 3D (2012)\n• Direção Defensiva e Preventiva (CNC e Off Road - Padrão VALE - RAC 2)"
+      };
 
-        // Renderiza a data de atualização
-        const dateElement = m.dataRelatorio ? `
-          <div style="font-size: .75rem; color: var(--text-muted); display: flex; align-items: center; gap: .35rem; margin-top: .4rem; margin-bottom: .2rem; font-weight: 500;">
-            ${SVG.calendar} Relatório: <strong style="color: var(--text-strong); font-weight: 700;">${m.dataRelatorio}</strong>
-          </div>
-        ` : '';
-
-        // Renderiza o escudo de bloqueio se a pessoa for Ex-colaborador
-        const exEmployeeOverlay = m.ex_colaborador ? `
-          <div class="ex-employee-shield">
-            ${SVG.block}
-            <div class="shield-title">Ex-colaborador</div>
-            <div class="shield-text">Esta pessoa não faz mais parte do quadro da empresa.</div>
-            <button class="shield-btn" onclick="this.parentElement.style.opacity='0'; setTimeout(()=>this.parentElement.style.display='none', 400);">Acessar assim mesmo</button>
-          </div>
-        ` : '';
-
-        return `
-          <div class="card" style="animation-delay:${i*60}ms">
-            ${exEmployeeOverlay}
-            <div class="card-header">
-              <div style="display:flex;gap:.5rem">${m.recente ? `<span class="recent-badge">${SVG.sparkle} Recente</span>` : ''}</div>
-              <span class="li-icon">${SVG.li}</span>
+      return (
+        <div className="min-h-screen font-sans pb-16 selection:bg-blue-200">
+          
+          <div className={`fixed top-24 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ${toastMsg ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'}`}>
+            <div className="bg-gradient-to-r from-green-600 to-emerald-700 text-white px-6 py-3 rounded-full shadow-2xl shadow-green-900/20 font-medium flex items-center gap-2 border border-green-500/50">
+              <CheckCircle2 size={20} />
+              {toastMsg}
             </div>
-            <div class="card-identity">
-              <div class="avatar-wrap">
-                <img class="avatar" src="${m.avatar}" onerror="this.src='${fallback}'"/>
-                ${m.score >= 90 && !m.faltaCapa ? `<span class="score-badge">${SVG.shield}</span>` : ''}
+          </div>
+
+          <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white shadow-sm">
+            <div className="max-w-5xl mx-auto px-4 py-4">
+
+              {}
+              <div className="mb-4">
+                <a 
+                  href="https://hidrogest.github.io/hublinkedin/"
+                  className="group relative inline-flex items-center justify-center self-start"
+                  title="Voltar para a página inicial"
+                >
+                  <span className="absolute -inset-1 bg-gradient-to-r from-[#0a66c2] via-[#34d399] to-[#0ea5e9] rounded-full blur-md opacity-40 group-hover:opacity-80 animate-pulse transition duration-500"></span>
+                  <span className="relative flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-lg border border-white/60 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.05)] transition-all duration-300 group-hover:bg-white/40 group-hover:shadow-[0_8px_25px_rgba(0,0,0,0.1)] overflow-hidden">
+                    <span className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/70 to-transparent rounded-t-full pointer-events-none"></span>
+                    <ArrowLeft size={16} className="text-[#0B3B59] group-hover:-translate-x-1 transition-transform duration-300 relative z-10" />
+                    <span className="text-[13px] uppercase tracking-wider font-bold text-[#0B3B59] relative z-10">
+                      Voltar para o Início
+                    </span>
+                  </span>
+                </a>
               </div>
-              <div style="width:100%">
-                <div class="card-name">${m.nome}</div>
-                <div class="card-role">${m.cargo}</div>
-                <div class="verify-pill ${m.verificado ? 'confirmed' : 'pending'}">${m.verificado ? SVG.check : SVG.alert} ${m.verificado ? 'Verificada' : 'Não Verificada'}</div>
-                ${m.faltaCapa ? `<div class="verify-pill pending" style="margin-top: 6px; background: var(--badge-orange-bg); color: var(--badge-orange-text); border-color: var(--badge-orange-border);">${SVG.alert} Falta colocar a capa</div>` : ''}
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="progress-meta">
-                <span class="progress-label">Otimização</span>
-                <div style="text-align:right">
-                  <div class="score-num ${tier}">${m.score}%</div>
-                  <div class="score-status ${tier}">${label}</div>
+
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="bg-gradient-to-br from-[#0B3B59] to-[#062438] text-white p-2.5 rounded-xl shadow-lg shadow-[#0B3B59]/20">
+                    <Linkedin size={24} />
+                  </div>
+                  <div>
+                    <h1 className="font-bold text-xl text-gray-900 leading-tight">Uma Ideia para o Seu Perfil</h1>
+                    <p className="text-sm text-gray-500 font-medium">Preparado para: Antônio Augusto</p>
+                  </div>
                 </div>
               </div>
-              <div class="progress-track"><div class="progress-fill ${tier}" data-width="${m.score}" style="width:0%"></div></div>
-              ${dateElement}
-              ${linkedinButton}
-              ${capaButton}
-              <a class="card-cta" href="${m.url}" target="_blank">Ver Relatório ${SVG.ext}</a>
             </div>
-          </div>`;
-      }).join('');
+          </div>
 
-      requestAnimationFrame(() => {
-          setTimeout(() => {
-            document.querySelectorAll('.progress-fill[data-width]').forEach(el => el.style.width = el.dataset.width + '%');
-          }, 100);
-      });
+          {}
+          <div className="max-w-5xl mx-auto mt-8 px-4 grid grid-cols-1 lg:grid-cols-4 gap-6">
+            
+            <div className="lg:col-span-1">
+              <div className="sticky top-28 space-y-4">
+                <div className="bg-gradient-to-br from-[#0a66c2] to-[#063970] text-white rounded-2xl shadow-xl border border-blue-400 p-5 overflow-hidden relative">
+                  
+                  <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white opacity-5 rounded-full blur-xl"></div>
+                  <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-20 h-20 bg-blue-300 opacity-10 rounded-full blur-lg"></div>
+
+                  <h3 className="font-bold text-xl mb-3 flex items-center gap-2 relative z-10">
+                    <Rocket size={22} className="text-blue-300" />
+                    Por que ter o LinkedIn?
+                  </h3>
+                  
+                  <p className="text-sm text-blue-100 leading-relaxed mb-4 relative z-10">
+                    Oi Antônio! Dei uma pesquisada e vi que você não usa o LinkedIn ainda. Com a sua <strong className="text-white font-bold">formação em Engenharia Civil</strong> e mais de <strong className="text-white font-bold">9 anos de experiência</strong> liderando campo e monitoramento, seu currículo é extremamente valioso para a rede!
+                  </p>
+
+                  <ul className="space-y-3 mb-6 relative z-10">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 size={16} className="text-blue-300 shrink-0 mt-0.5" />
+                      <span className="text-sm text-blue-50">Mostrar sua trajetória técnica sólida (projetos Vale, Gerdau).</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 size={16} className="text-blue-300 shrink-0 mt-0.5" />
+                      <span className="text-sm text-blue-50">Conectar-se com outros Engenheiros e Gestores Ambientais.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 size={16} className="text-blue-300 shrink-0 mt-0.5" />
+                      <span className="text-sm text-blue-50">Representar o lado comercial e técnico da Hidrogest.</span>
+                    </li>
+                  </ul>
+
+                  <button 
+                    onClick={() => setShowCopyModal(true)}
+                    className="w-full relative z-10 flex items-center justify-center gap-2 bg-white text-[#0a66c2] px-4 py-3 rounded-xl font-bold text-sm shadow-lg transition-all hover:scale-[1.02] hover:bg-blue-50"
+                  >
+                    <CopyIcon size={18} />
+                    Ver Textos Prontos
+                  </button>
+                </div>
+
+                {}
+                <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg border border-gray-100 p-5">
+                  <h3 className="font-bold text-gray-900 text-[17px] mb-2 flex items-center gap-2">
+                    <Smartphone size={20} className="text-[#0a66c2]" />
+                    Como baixar o app?
+                  </h3>
+                  <p className="text-[13px] text-gray-600 mb-4 leading-relaxed">
+                    A primeira coisa é criar uma conta gratuita no aplicativo. Você pode baixar direto pela loja do seu celular:
+                  </p>
+                  <div className="space-y-2.5">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.linkedin.android"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center justify-center gap-2 bg-[#0a66c2] text-white px-4 py-2.5 rounded-xl font-bold text-[13px] shadow-md transition-all hover:bg-[#084e96] hover:shadow-lg"
+                    >
+                      <Smartphone size={16} /> Android (Play Store)
+                    </a>
+                    <a
+                      href="https://apps.apple.com/br/app/linkedin-vagas-e-networking/id288429040"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center justify-center gap-2 bg-gray-800 text-white px-4 py-2.5 rounded-xl font-bold text-[13px] shadow-md transition-all hover:bg-black hover:shadow-lg"
+                    >
+                      <Smartphone size={16} /> iPhone (App Store)
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {}
+            <div className="lg:col-span-3 space-y-4 relative">
+              
+              <div className="absolute -right-2 -top-6 text-sm font-bold text-gray-400 flex items-center gap-1 uppercase tracking-wider">
+                Como seu perfil vai ficar <ChevronRight size={14}/>
+              </div>
+
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white overflow-hidden relative transition-all duration-500 hover:shadow-lg">
+                
+                <div className="w-full relative overflow-hidden group/banner bg-gray-200" style={{ aspectRatio: '10/3', minHeight: '120px' }}>
+                  <img 
+                    src={bgCapa} 
+                    alt="Capa Hidrogest" 
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10">
+                    <a 
+                      href={bgCapaDownload} 
+                      download="Capa_Antonio_Hidrogest.png"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 sm:gap-2 bg-white/95 hover:bg-white text-[#0B3B59] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-bold text-xs sm:text-sm shadow-lg transition-all border border-transparent hover:border-[#0B3B59] hover:scale-105"
+                      title="Baixar a capa que eu fiz pra você"
+                    >
+                      <DownloadIcon size={16} />
+                      <span className="hidden sm:inline">Baixar sua Capa</span>
+                      <span className="sm:hidden">Baixar</span>
+                    </a>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                </div>
+
+                <div className="px-4 sm:px-6 pb-6 relative">
+                  
+                  <div className="relative -mt-16 sm:-mt-20 md:-mt-24 mb-3 z-20 inline-block">
+                    <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border-4 border-white bg-slate-100 shadow-lg relative flex flex-col items-center justify-center overflow-hidden">
+                      <img 
+                        src={fotoPerfil} 
+                        alt="Antônio Augusto" 
+                        className="w-full h-full object-cover relative z-10" 
+                      />
+                      <div className="absolute inset-0 ring-1 ring-black/10 rounded-full pointer-events-none z-20"></div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+                    <div className="max-w-xl w-full">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-1.5">
+                        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
+                          Antônio Augusto dos Santos
+                        </h1>
+                        <CopyInlineButton text={copyTexts.nome} label="Copiar Nome" onCopy={handleCopyText} />
+                      </div>
+
+                      <div className="text-[16px] sm:text-[17px] text-gray-700 leading-snug mt-2">
+                        <span className="block font-medium text-gray-800">
+                          {copyTexts.titulo}
+                        </span>
+                      </div>
+
+                      <div className="text-gray-500 text-sm mt-3 flex items-center gap-1.5 font-medium">
+                        <MapPin size={16} className="text-gray-400" /> Belo Horizonte, Minas Gerais, Brasil
+                      </div>
+                      
+                      <div className="mt-3 flex flex-wrap gap-3 sm:gap-4 text-sm font-semibold text-[#0a66c2] inline-flex">
+                        <span className="flex items-center gap-1.5 cursor-pointer"><Mail size={16} /> augusto.asantos@yahoo.com.br</span>
+                        <span className="flex items-center gap-1.5 cursor-pointer"><Phone size={16} /> (31) 97504-8883</span>
+                      </div>
+                    </div>
+
+                    <div className="hidden md:flex flex-col gap-3 items-start sm:items-end w-56 shrink-0 mt-2">
+                      <div className="flex items-center gap-3 w-full justify-end group">
+                        <span className="text-[15px] font-semibold text-gray-900 text-right leading-tight group-hover:text-[#0a66c2] transition-colors">HIDROGEST ENGENHARIA</span>
+                        <img src={logoHidrogest} alt="Hidrogest" className="w-10 h-10 shrink-0 object-contain bg-white rounded-lg shadow-sm border border-gray-100 group-hover:scale-105 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {}
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
+                  <h2 className="text-xl font-bold text-gray-900">Sobre</h2>
+                  <CopyInlineButton text={copyTexts.sobre} label="Copiar Resumo" onCopy={handleCopyText} />
+                </div>
+                
+                <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 mb-4">
+                  <p className="text-sm text-blue-800 flex items-start gap-2">
+                    <Info size={18} className="text-blue-500 shrink-0 mt-0.5" />
+                    <span>Deixei este resumo bem robusto, focando tanto na sua formação em Engenharia quanto nos seus anos coordenando projetos para empresas gigantes (Vale, Gerdau). Pode pedir para ajustar se achar necessário!</span>
+                  </p>
+                </div>
+
+                <div className="text-[15px] text-gray-800 space-y-3 whitespace-pre-wrap leading-relaxed">
+                  {copyTexts.sobre}
+                </div>
+              </div>
+
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
+                <h2 className="text-xl font-bold text-gray-900 mb-8">Sua Experiência</h2>
+
+                {/* Experiência 1 */}
+                <div className="flex gap-3 sm:gap-4 group/exp">
+                  <img src={logoHidrogest} alt="Hidrogest" className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 object-contain bg-white shadow-md rounded-lg border border-gray-100 mt-1 z-10 relative group-hover/exp:scale-105 transition-transform" />
+                  <div className="flex-1 pb-8 relative">
+                    <div className="absolute top-12 bottom-0 left-[-26px] sm:left-[-38px] w-0.5 bg-gradient-to-b from-gray-200 to-gray-100"></div>
+                    
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-[16px] sm:text-[17px] font-bold text-gray-900">
+                          Técnico Hidrometrista Pleno
+                        </h3>
+                        <div className="text-[14px] sm:text-[15px] text-gray-900 font-medium mt-0.5">HIDROGEST ENGENHARIA E CONSULTORIA</div>
+                      </div>
+                      <CopyInlineButton text={copyTexts.experienciaHidrogest} label="Copiar texto" onCopy={handleCopyText} />
+                    </div>
+                    
+                    <div className="text-[14px] sm:text-[15px] text-gray-500 mt-1">
+                      Desde maio de 2025
+                    </div>
+                    <div className="text-[14px] sm:text-[15px] text-gray-500">Belo Horizonte, Minas Gerais, Brasil</div>
+                    
+                    <div className="mt-4 text-[14px] sm:text-[15px] text-gray-800 leading-relaxed space-y-3">
+                      <div className="whitespace-pre-wrap">{copyTexts.experienciaHidrogest}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Experiência 2 */}
+                <div className="flex gap-3 sm:gap-4 group/exp">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-100 text-gray-600 shadow-sm rounded-lg border border-gray-200 mt-1 z-10 relative group-hover/exp:scale-105 transition-transform">
+                      <Briefcase size={24} />
+                  </div>
+                  <div className="flex-1 pb-8 relative">
+                    <div className="absolute top-12 bottom-0 left-[-26px] sm:left-[-38px] w-0.5 bg-gradient-to-b from-gray-200 to-gray-100"></div>
+                    
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-[16px] sm:text-[17px] font-bold text-gray-900">
+                          Encarregado de Obras
+                        </h3>
+                        <div className="text-[14px] sm:text-[15px] text-gray-900 font-medium mt-0.5">Itapoços Poços Artesianos</div>
+                      </div>
+                      <CopyInlineButton text={copyTexts.experienciaItapocos} label="Copiar texto" onCopy={handleCopyText} />
+                    </div>
+                    
+                    <div className="text-[14px] sm:text-[15px] text-gray-500 mt-1">
+                      06/2024 - 12/2024
+                    </div>
+                    
+                    <div className="mt-4 text-[14px] sm:text-[15px] text-gray-800 leading-relaxed space-y-3">
+                      <div className="whitespace-pre-wrap">{copyTexts.experienciaItapocos}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Experiência 3 */}
+                <div className="flex gap-3 sm:gap-4 group/exp">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-100 text-gray-600 shadow-sm rounded-lg border border-gray-200 mt-1 z-10 relative group-hover/exp:scale-105 transition-transform">
+                      <Briefcase size={24} />
+                  </div>
+                  <div className="flex-1 pb-8 relative">
+                    <div className="absolute top-12 bottom-0 left-[-26px] sm:left-[-38px] w-0.5 bg-gradient-to-b from-gray-200 to-transparent"></div>
+                    
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-[16px] sm:text-[17px] font-bold text-gray-900">
+                          Analista Ambiental Junior
+                        </h3>
+                        <div className="text-[14px] sm:text-[15px] text-gray-900 font-medium mt-0.5">Watergeo Solutions</div>
+                      </div>
+                      <CopyInlineButton text={copyTexts.experienciaWatergeo} label="Copiar texto" onCopy={handleCopyText} />
+                    </div>
+                    
+                    <div className="text-[14px] sm:text-[15px] text-gray-500 mt-1">
+                      01/2024 - 06/2024
+                    </div>
+                    
+                    <div className="mt-4 text-[14px] sm:text-[15px] text-gray-800 leading-relaxed space-y-3">
+                      <div className="whitespace-pre-wrap">{copyTexts.experienciaWatergeo}</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Outras Experiências Rápidas */}
+                <div className="flex gap-3 sm:gap-4 group/exp">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-50 text-gray-400 border border-dashed border-gray-300 rounded-lg mt-1 z-10 relative">
+                      <Award size={20} />
+                  </div>
+                  <div className="flex-1 pb-2 relative">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-[15px] font-bold text-gray-700">
+                          Trabalhos e Consultorias Anteriores
+                        </h3>
+                        <div className="text-[14px] text-gray-500 mt-1">
+                          (Técnico em Meio Ambiente, Sub encarregado e Acompanhamento Técnico)
+                        </div>
+                      </div>
+                      <CopyInlineButton text={copyTexts.experienciaAnteriores} label="Copiar texto" onCopy={handleCopyText} />
+                    </div>
+                    
+                    <div className="mt-2 text-[14px] sm:text-[15px] text-gray-600 leading-relaxed space-y-3">
+                      <div className="whitespace-pre-wrap">{copyTexts.experienciaAnteriores}</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {}
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
+                <h2 className="text-xl font-bold text-gray-900 mb-8">Formação Acadêmica e Licenças</h2>
+
+                <div className="flex gap-3 sm:gap-4 group/exp mb-6">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-100 text-gray-600 shadow-sm rounded-lg border border-gray-200 mt-1 z-10 relative group-hover/exp:scale-105 transition-transform">
+                      <GraduationCap size={24} />
+                  </div>
+                  <div className="flex-1 pb-2 relative">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-[16px] sm:text-[17px] font-bold text-gray-900">
+                          Graduação em Engenharia Civil
+                        </h3>
+                        <div className="text-[14px] sm:text-[15px] text-gray-900 font-medium mt-0.5">Ensino Superior</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 sm:gap-4 group/exp">
+                  <img src={logoMec} alt="MEC" className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 object-contain bg-white shadow-md rounded-lg border border-gray-100 mt-1 z-10 relative group-hover/exp:scale-105 transition-transform" />
+                  <div className="flex-1 pb-2 relative">
+                    
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-[16px] sm:text-[17px] font-bold text-gray-900">
+                          Técnico em Meio Ambiente
+                        </h3>
+                        <div className="text-[14px] sm:text-[15px] text-gray-900 font-medium mt-0.5">Escola Politécnica Brasileira</div>
+                      </div>
+                      <CopyInlineButton text={copyTexts.formacaoTecnico} label="Copiar licença" onCopy={handleCopyText} />
+                    </div>
+
+                    <div className="text-[14px] sm:text-[15px] text-gray-500 mt-1">
+                      Concluído em 2022
+                    </div>
+                    
+                    <div className="mt-3 text-[14px] sm:text-[15px] text-gray-800 leading-relaxed">
+                      <p>{copyTexts.formacaoTecnico}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {}
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
+                  <h2 className="text-xl font-bold text-gray-900">Cursos e Certificações Extras</h2>
+                  <CopyInlineButton text={copyTexts.cursosExtra} label="Copiar Certificados" onCopy={handleCopyText} />
+                </div>
+                
+                <div className="text-[15px] text-gray-800 space-y-3 whitespace-pre-wrap leading-relaxed bg-slate-50 border border-slate-100 p-4 rounded-xl">
+                  {copyTexts.cursosExtra}
+                </div>
+              </div>
+
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
+                <h2 className="text-xl font-bold text-gray-900 mb-6">Competências que podemos adicionar</h2>
+                <p className="text-sm text-gray-500 mb-4">Essas são palavras-chave excelentes que os recrutadores buscam no seu perfil:</p>
+                <div className="flex flex-wrap gap-2.5">
+                  {["Engenharia Civil", "Hidrologia", "Hidrometria", "Gestão de Recursos Hídricos", "Sedimentometria", "Telemetria", "Gestão de Obras", "Meio Ambiente", "AutoCAD", "QGIS/ArcGIS", "Revit", "RDO/APR/DSS"].map(comp => (
+                    <span key={comp} className="bg-gradient-to-br from-blue-50 to-indigo-50/50 text-[#0B3B59] px-4 py-1.5 rounded-full text-sm font-medium border border-blue-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default">{comp}</span>
+                  ))}
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+          {}
+          {showCopyModal && (
+            <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+              <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto flex flex-col border border-white">
+                
+                <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 py-4 flex items-center justify-between z-10">
+                  <h2 className="text-xl font-bold text-[#0B3B59] flex items-center gap-2">
+                    <CopyIcon size={20} className="text-[#0a66c2]" /> Textos Prontos para Uso
+                  </h2>
+                  <button onClick={() => setShowCopyModal(false)} className="text-gray-400 hover:text-red-500 hover:bg-red-50 p-2 rounded-full transition-all">
+                    <XCircle size={24} />
+                  </button>
+                </div>
+
+                <div className="p-6 space-y-6">
+                  <p className="text-sm text-gray-600">Oi Antônio! Quando for criar o seu perfil ou configurar pela primeira vez no LinkedIn, é só clicar nos botões azuis. Eles copiam o texto perfeito para você preencher os campos. É muito rápido!</p>
+                  
+                  <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50 relative group">
+                    <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Seu Nome Completo</h3>
+                    <p className="text-gray-800 bg-white p-3 rounded-lg border border-gray-200 shadow-sm font-medium">{copyTexts.nome}</p>
+                    <button onClick={() => handleCopyText(copyTexts.nome)} className="mt-3 text-sm font-bold text-[#0a66c2] hover:text-[#084e96] flex items-center gap-1 transition-all">
+                      <CopyIcon size={16} /> Clicar para copiar o Nome
+                    </button>
+                  </div>
+
+                  <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50 relative group">
+                    <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Seu Título Profissional</h3>
+                    <p className="text-gray-800 bg-white p-3 rounded-lg border border-gray-200 shadow-sm font-medium">{copyTexts.titulo}</p>
+                    <button onClick={() => handleCopyText(copyTexts.titulo)} className="mt-3 text-sm font-bold text-[#0a66c2] hover:text-[#084e96] flex items-center gap-1 transition-all">
+                      <CopyIcon size={16} /> Clicar para copiar o Título
+                    </button>
+                  </div>
+
+                  <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50 relative group">
+                    <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Resumo (Quem é você)</h3>
+                    <p className="text-gray-800 bg-white p-3 rounded-lg border border-gray-200 shadow-sm whitespace-pre-wrap">{copyTexts.sobre}</p>
+                    <button onClick={() => handleCopyText(copyTexts.sobre)} className="mt-3 text-sm font-bold text-[#0a66c2] hover:text-[#084e96] flex items-center gap-1 transition-all">
+                      <CopyIcon size={16} /> Clicar para copiar o Resumo
+                    </button>
+                  </div>
+
+                  <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50 relative group">
+                    <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Seu Trabalho na Hidrogest</h3>
+                    <p className="text-gray-800 bg-white p-3 rounded-lg border border-gray-200 shadow-sm whitespace-pre-wrap">{copyTexts.experienciaHidrogest}</p>
+                    <button onClick={() => handleCopyText(copyTexts.experienciaHidrogest)} className="mt-3 text-sm font-bold text-[#0a66c2] hover:text-[#084e96] flex items-center gap-1 transition-all">
+                      <CopyIcon size={16} /> Clicar para copiar
+                    </button>
+                  </div>
+                  
+                  <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50 relative group">
+                    <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Experiência: Itapoços</h3>
+                    <p className="text-gray-800 bg-white p-3 rounded-lg border border-gray-200 shadow-sm whitespace-pre-wrap">{copyTexts.experienciaItapocos}</p>
+                    <button onClick={() => handleCopyText(copyTexts.experienciaItapocos)} className="mt-3 text-sm font-bold text-[#0a66c2] hover:text-[#084e96] flex items-center gap-1 transition-all">
+                      <CopyIcon size={16} /> Clicar para copiar
+                    </button>
+                  </div>
+                  
+                  <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50 relative group">
+                    <h3 className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Experiência: Watergeo</h3>
+                    <p className="text-gray-800 bg-white p-3 rounded-lg border border-gray-200 shadow-sm whitespace-pre-wrap">{copyTexts.experienciaWatergeo}</p>
+                    <button onClick={() => handleCopyText(copyTexts.experienciaWatergeo)} className="mt-3 text-sm font-bold text-[#0a66c2] hover:text-[#084e96] flex items-center gap-1 transition-all">
+                      <CopyIcon size={16} /> Clicar para copiar
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          )}
+
+        </div>
+      );
     }
-    render();
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
   </script>
 </body>
 </html>
