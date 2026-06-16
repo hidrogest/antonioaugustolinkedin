@@ -78,22 +78,25 @@
       
       const fotoPerfil = "https://drive.google.com/thumbnail?id=1bEENmgAyL2WoptfIdPCv7SVNyYPKJQil&sz=w400"; 
 
-      const handleCopyText = (text) => {
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-        textArea.style.top = "0";
-        textArea.style.left = "0";
-        textArea.style.position = "fixed";
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
+      const handleCopyText = async (text) => {
         try {
-          document.execCommand('copy');
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            // Fallback para navegadores antigos
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "absolute";
+            textArea.style.left = "-999999px";
+            document.body.prepend(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            textArea.remove();
+          }
           setToastMsg("Prontinho! Texto copiado.");
         } catch (err) {
           setToastMsg("Ops, não consegui copiar.");
         }
-        document.body.removeChild(textArea);
         setTimeout(() => setToastMsg(""), 3000);
       };
 
@@ -124,7 +127,6 @@
           <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white shadow-sm">
             <div className="max-w-5xl mx-auto px-4 py-4">
 
-              {}
               <div className="mb-4">
                 <a 
                   href="https://hidrogest.github.io/hublinkedin/"
@@ -156,7 +158,6 @@
             </div>
           </div>
 
-          {}
           <div className="max-w-5xl mx-auto mt-8 px-4 grid grid-cols-1 lg:grid-cols-4 gap-6">
             
             <div className="lg:col-span-1">
@@ -199,7 +200,6 @@
                   </button>
                 </div>
 
-                {}
                 <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg border border-gray-100 p-5">
                   <h3 className="font-bold text-gray-900 text-[17px] mb-2 flex items-center gap-2">
                     <Smartphone size={20} className="text-[#0a66c2]" />
@@ -230,7 +230,6 @@
               </div>
             </div>
 
-            {}
             <div className="lg:col-span-3 space-y-4 relative">
               
               <div className="absolute -right-2 -top-6 text-sm font-bold text-gray-400 flex items-center gap-1 uppercase tracking-wider">
@@ -314,7 +313,6 @@
                 </div>
               </div>
 
-              {}
               <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
                   <h2 className="text-xl font-bold text-gray-900">Sobre</h2>
@@ -445,7 +443,6 @@
 
               </div>
 
-              {}
               <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
                 <h2 className="text-xl font-bold text-gray-900 mb-8">Formação Acadêmica e Licenças</h2>
 
@@ -514,7 +511,6 @@
                 </div>
               </div>
 
-              {}
               <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
                   <h2 className="text-xl font-bold text-gray-900">Cursos e Certificações Extras</h2>
@@ -539,7 +535,6 @@
             </div>
           </div>
 
-          {}
           {showCopyModal && (
             <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
               <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto flex flex-col border border-white">
